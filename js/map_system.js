@@ -16,7 +16,7 @@ MapSystem['TEST'][0].map += 'X XXXAX';
 MapSystem['TEST'][0].map += 'X XXX X';
 MapSystem['TEST'][0].map += 'X     X';
 MapSystem['TEST'][0].map += 'XXXXXXX';
-MapSystem['TEST'][0].labels = {'A': 'MONSTER/LICH'};
+MapSystem['TEST'][0].labels = {'A': 'MONSTER/HUMAN_GUARD'};
 
 MapSystem['Underground'] = {};
 MapSystem['Underground'].systemDirection = 'DOWN';

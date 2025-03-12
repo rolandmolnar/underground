@@ -792,7 +792,6 @@ Monster.get = function(type) {
 							Message.print('Ray Of Petrification misses '+Game.player.name+'.', false);
 						}
 					}, 800);
-					return false;
 				} else {
 					return true;
 				}
@@ -803,11 +802,11 @@ Monster.get = function(type) {
 			var isInPlayersView = (this.getDistanceFromPlayer(maxPos) > -1);
 			if (isInPlayersView) {
 				var savingThrowModifier = -5;
-				var roll = Combat.roll(1, 5);
+				var roll = Combat.roll(1, 7);
 				var playerPos = Game.player.position;
-				MazeUtil.drawPowerWord();
 				if (roll == 1 && !Game.player.paralyzed) {
 					Message.print('Beholder attacks from a distance with Ray Of Stunning.', false);
+					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
 							Game.player.paralyzed = true;
@@ -823,6 +822,7 @@ Monster.get = function(type) {
 					}, 800);
 				} else if (roll == 2 && !Game.player.blind) {
 					Message.print('Beholder attacks from a distance with Ray Of Blindness.', false);
+					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
 							Game.player.blind = true;
@@ -837,6 +837,7 @@ Monster.get = function(type) {
 					}, 800);
 				} else if (roll == 3 && !Game.player.weakened) {
 					Message.print('Beholder attacks from a distance with Ray Of Enfeeblement.', false);
+					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
 							Game.player.weakened = true;
@@ -855,6 +856,7 @@ Monster.get = function(type) {
 					}, 800);
 				} else if (roll == 4 && !Game.player.petrified && !Game.player.paralyzed) {
 					Message.print('Beholder attack from a distances with Ray Of Petrification.', false);
+					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
 							Game.player.paralyzed = true;
@@ -881,8 +883,9 @@ Monster.get = function(type) {
 							Message.print('Ray Of Petrification misses '+Game.player.name+'.', false);
 						}
 					}, 800);
-				} else {
+				} else if (roll == 5) {
 					Message.print('Beholder attacks from a distance with Ray Of Death.', false);
+					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
 							Game.player.hp = 0;
@@ -892,7 +895,10 @@ Monster.get = function(type) {
 							Message.print('Ray Of Death misses '+Game.player.name+'.', false);
 						}
 					}, 800);
+				} else {
+					return true;
 				}
+				return false;
 			}
 			return true;
 		});
