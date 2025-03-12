@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Underground</title>
+<link rel="stylesheet" type="text/css" href="style/default.css">
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="js/domain/canvas.js"></script>
+<script type="text/javascript" src="js/domain/position.js"></script>
+<script type="text/javascript" src="js/domain/enter_position.js"></script>
+<script type="text/javascript" src="js/domain/wall.js"></script>
+<script type="text/javascript" src="js/domain/creature.js"></script>
+<script type="text/javascript" src="js/domain/item.js"></script>
+<script type="text/javascript" src="js/message.js"></script>
+<script type="text/javascript" src="js/map_system.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/domain/monster.js"></script>
+<script type="text/javascript" src="js/monster_thread.js"></script>
+<script type="text/javascript" src="js/maze.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/domain/character.js"></script>
+<script type="text/javascript" src="js/combat.js"></script>
+<script type="text/javascript" src="js/event.js"></script>
+</head>
+<body id="app" onload="Event.init();">
+<table>
+	<tr>
+		<td><canvas id="gameCanvas" onclick="Event.pickUp();"></canvas></td>
+		<td>
+			<table>
+				<tr><td>
+					<table>
+						<tr>
+							<td><input id="weapon" type="image" src="image/empty.png" alt="Weapon" onclick="Event.dropWeapon();" /></td><td><div class="attribute" id="attackModifier">0</div></td>
+							<td><img src="image/speed.png" alt="Speed" /></td><td><div class="attribute" id="speedModifier">0</div></td>
+						</tr>
+						<tr>
+							<td><input id="armor" type="image" src="image/empty.png" alt="Armor" onclick="Event.dropArmor();" /></td><td><div class="attribute" id="defenseModifier">0</div></td>
+							<td><div class="attribute" id="LevelText">LVL</div></td><td><div class="attribute" id="level">1</div></td>
+						</tr>
+					</table>
+				</td></tr>
+				<tr><td><textarea id="messageText" rows="8" cols="27" readonly></textarea></td></tr>
+				<tr><td>
+					<table>
+						<tr>
+							<td><input id="turnLeftArrow" class="arrow" type="image" src="image/turn_left.png" alt="Turn left" onclick="Event.move('TURN_LEFT');" /></td>
+							<td><input id="upArrow" class="arrow" type="image" src="image/up.png" alt="Up" onclick="Event.move('UP');" /></td>
+							<td><input id="turnRightArrow" class="arrow" type="image" src="image/turn_right.png" alt="Turn right" onclick="Event.move('TURN_RIGHT');" /></td>
+						</tr>
+						<tr>
+							<td><input id="leftArrow" class="arrow" type="image" src="image/left.png" alt="Left" onclick="Event.move('LEFT');" /></td>
+							<td><input id="downArrow" class="arrow" type="image" src="image/down.png" alt="Down" onclick="Event.move('DOWN');" /></td>
+							<td><input id="rightArrow" class="arrow" type="image" src="image/right.png" alt="Right" onclick="Event.move('RIGHT');" /></td>
+						</tr>
+					</table>
+				</td></tr>
+				<tr><td><input id="attackButton" class="btn" type="button" value="Attack" onclick="Event.attack();" /></td></tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="attribute" id="mapName"></div></td><td></td>
+	</tr>
+</table>
+</body>
+</html>

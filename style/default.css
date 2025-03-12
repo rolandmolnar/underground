@@ -1,0 +1,39 @@
+body {
+    background-image: url('../image/background.png');
+    background-repeat: no-repeat;
+}
+
+td {
+	padding: 0px;
+	margin: 0px;
+}
+
+input.arrow {
+	border: 2px solid white;
+}
+
+input.arrow:hover {
+	border: 2px solid black;
+}
+
+input#attackButton {
+	width: 210px;
+	height: 50px;
+	font-size: 20px;
+	font-weight: bold;
+	border: 2px solid black;
+}
+
+textarea#messageText{
+	resize: none;
+}
+
+div.attribute {
+	margin-left: 15px;
+	font: 30px arial, sans-serif;
+}
+
+div#mapName {
+	text-align: center;
+	font-size: 18px;
+}
