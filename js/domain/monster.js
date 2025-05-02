@@ -79,7 +79,7 @@ Monster.get = function(type) {
 			bleed: 'image/goblin_bl.png'}, 35);
 	} else if (type == 'ZOMBIE') {
 		return new Monster('Zombie', 3, 14, -8, Combat.roll(10, 20), {move: 'image/zombie.png', 
-			bleed: 'image/zombie_bl.png'}, 30);
+			bleed: 'image/zombie_bl.png'}, 25);
 	} else if (type == 'GHOUL') {
 		return new Monster('Ghoul', 5, 17, -2, Combat.roll(20, 20), {move: 'image/ghoul.png', 
 			bleed: 'image/ghoul_bl.png'}, 45, function() {
