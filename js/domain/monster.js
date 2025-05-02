@@ -86,7 +86,7 @@ Monster.get = function(type) {
 				var roll = Combat.roll(1, 3);
 				if (Game.player.poisonedInterval == null && !Game.player.paralyzed && roll == 1) {
 					Game.player.poisonedInterval = true;
-					Message.print('Ghoul attacks with poisonous breathe.', false);
+					Message.print('Ghoul attacks with poisonous breath.', false);
 					MazeUtil.drawGreenCloud();
 					var that = this;
 					setTimeout(function() {
@@ -129,7 +129,7 @@ Monster.get = function(type) {
 				var roll = Combat.roll(1, 4);
 				if (!Game.player.petrified && !Game.player.paralyzed && (this.firstBreath == null || this.firstBreath == false || roll == 1)) {
 					this.firstBreath = true;
-					Message.print('Gorgon attacks with petrifying breathe.', false);
+					Message.print('Gorgon attacks with petrifying breath.', false);
 					MazeUtil.drawGreenCloud();
 					var that = this;
 					setTimeout(function() {
@@ -398,7 +398,7 @@ Monster.get = function(type) {
 						}
 					}, 800);
 				} else {
-					Message.print('Nightmare attacks with Fire Breathe.', false);
+					Message.print('Nightmare attacks with fire breath.', false);
 					MazeUtil.drawFireball();
 					setTimeout(function() {
 						if (!Game.player.savingThrow()) {
@@ -443,7 +443,7 @@ Monster.get = function(type) {
 			bleed: 'image/hell_hound_bl.png'}, 70, function() {
 				var roll = Combat.roll(1, 10);
 				if (roll <= 3) {
-					Message.print('Hell Hound attacks with Fire Breathe.', false);
+					Message.print('Hell Hound attacks with fire breath.', false);
 					MazeUtil.drawFireball();
 					setTimeout(function() {
 						if (!Game.player.savingThrow()) {
@@ -945,7 +945,7 @@ Monster.get = function(type) {
 					}, 800);
 					return true;
 				} else {
-					Message.print('Red Dragon attacks with its Breath Weapon.', false);
+					Message.print('Red Dragon attacks with its breath weapon.', false);
 					MazeUtil.drawFireball();
 					var that = this;
 					setTimeout(function() {
