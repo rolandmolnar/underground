@@ -301,21 +301,25 @@ Monster.get = function(type) {
 				if (this.healing == null) {
 					this.healing = 2;
 				}
+				if (this.hold == null) {
+					this.hold = 2;
+				}
 				if (this.hp < 15 && this.healing > 0) {
 					Message.print('Human Priest casts Healing.', false);
 					MazeUtil.drawHealing();
+					this.healing--;
 					var that = this;
 					setTimeout(function() {
 						that.hp += Combat.roll(3, 10);
-						that.healing--;
 						Message.print('Some wounds of the Human Priest have been cured.', false);
 					}, 600);
 					return false;
 				} else if (!Game.player.paralyzed) {
-					var roll = Combat.roll(1, 5);
-					if (roll == 1) {
+					var roll = Combat.roll(1, 3);
+					if (roll == 1 && this.hold > 0) {
 						Message.print('Human Priest casts a Hold Spell.', false);
 						MazeUtil.drawPowerWord();
+						this.hold--;
 						var that = this;
 						setTimeout(function() {
 							if (that.position.isNeighborPosition(Game.player.position.x, Game.player.position.y) && !Game.player.savingThrow()) {
