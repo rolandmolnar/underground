@@ -859,7 +859,7 @@ Monster.get = function(type) {
 						}
 					}, 800);
 				} else if (roll == 4 && !Game.player.petrified && !Game.player.paralyzed) {
-					Message.print('Beholder attack from a distances with Ray Of Petrification.', false);
+					Message.print('Beholder attack from a distance with Ray Of Petrification.', false);
 					MazeUtil.drawPowerWord();
 					setTimeout(function() {
 						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
