@@ -100,7 +100,9 @@ Monster.get = function(type) {
 									Event.actAbility(true);
 								}, 4000);
 							}
-							if (!Game.player.savingThrow()) {
+							if (Game.player.savingThrow()) {
+								Game.player.poisonedInterval = null;
+							} else {
 								Message.print(Game.player.name+' is poisoned.', false);
 								Game.player.poisonedInterval = setInterval(function() {
 									if (Game.player.poisonedInterval != null) {
