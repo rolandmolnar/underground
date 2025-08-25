@@ -1,6 +1,5 @@
 var MazeUtil = function() {};
 
-MazeUtil.suspend = false; // drawMonsters synchronization
 MazeUtil.popUpSleep = 300;
 
 MazeUtil.draw = function(mazeViewCode, isBleeding, wall) {
@@ -258,10 +257,6 @@ MazeUtil.drawDimensionDoors = function(maxPos) {
 };
 
 MazeUtil.drawMonsters = function(maxPos, isBleeding) {
-	if (MazeUtil.suspend && !isBleeding) {
-		return;
-	}
-	MazeUtil.suspend = true;
 	var posArr = [];
 	var monsterIdxArr = [];
 	var nextPos = Game.player.position.getNextPosition();
@@ -322,7 +317,6 @@ MazeUtil.drawMonsters = function(maxPos, isBleeding) {
 					}
 				}
 			}
-			MazeUtil.suspend = false;
 			if (!allValid) {
 				MazeUtil.drawMonsters(maxPos, isBleeding);
 			}

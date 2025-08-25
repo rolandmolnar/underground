@@ -51,11 +51,11 @@ Event.move = function(arrow) {
 		var viewCode = Game.map.getViewCode(Game.player.position);
 		MazeUtil.draw(viewCode, false, Game.map.wall);
 	} else if (moveRes == 'WALL') {
-		Message.print("You can't go that way.");
+		Message.print("You can't go that way.", false);
 	} else if (moveRes == 'MONSTER') {
-		Message.print("You can't go that way. A monster is there!");
+		Message.print("You can't go that way. A monster is there!", false);
 	} else if (moveRes == 'DOOR') {
-		Message.print("The door is locked."); 
+		Message.print("The door is locked.", false); 
 	} else if (moveRes == 'OUT') {
 		var enterPosition = Game.getEnterPosition(newPosition, arrow);
 		if (!Game.isLastMap() || // or it is the last map, but ...

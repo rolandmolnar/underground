@@ -7,12 +7,16 @@ Combat.attack = function(attCreature, defCreature) {
 	if (roll > 1) {
 		var attValue = attCreature.attack + roll;
 		var defValue = defCreature.defense;
-		if (attValue > defValue) {
+		if (attValue > defValue + 10) {
+			var criticalHitExtraDamage = attValue - defValue - 10;
+			damage = attValue - defValue + criticalHitExtraDamage;
+			Message.print(attCreature.name+': critical hit', false);
+		} else if (attValue > defValue) {
 			damage = attValue - defValue;
 		}
 		if (roll >= 20) {
 			damage += 10;
-			Message.print(attCreature.name+': critical hit', false);
+			Message.print(attCreature.name+': lucky hit', false);
 		}
 		defCreature.hp -= damage;
 		if (damage > 0) {
@@ -21,7 +25,7 @@ Combat.attack = function(attCreature, defCreature) {
 			Message.print(attCreature.name+': miss', false);
 		}
 	} else {
-		Message.print(attCreature.name+': miss', false);
+		Message.print(attCreature.name+': unlucky miss', false);
 	}
 	return damage;
 };
