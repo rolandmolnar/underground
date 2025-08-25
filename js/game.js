@@ -33,7 +33,7 @@ Game.loadMap = function(enterPosition, first) {
 	Game.save(enterPosition);
 	document.getElementById('mapName').innerHTML = Game.map.name;
 	Game.markAsVisited(enterPosition.nextMapIdx);
-	Message.print("Entering the "+Game.map.name+"...");
+	Message.print("Entering the "+Game.map.name+"...", false);
 	MazeUtil.popUpInitEvent();
 };
 

@@ -68,7 +68,7 @@ Event.move = function(arrow) {
 			} else {
 				sysDirText = " Opening it...";
 			}
-			Message.print("You have found an exit door."+sysDirText, false);
+			Message.print("You have found an exit door."+sysDirText);
 		}
 		MonsterThread.stopAllThreads();
 		if (!Game.isLastMap() && !Game.isVisited(enterPosition.nextMapIdx) && 
