@@ -245,8 +245,18 @@ Monster.get = function(type) {
 		});
 	} else if (type == 'TROLL') {
 		return new Monster('Troll', 14, 17, -3, Combat.roll(50, 25), {move: 'image/troll.png', 
-			bleed: 'image/troll_bl.png'}, 100, null, function() {
-				if (this.maxHp == null) { // defend
+			bleed: 'image/troll_bl.png'}, 100, function() {
+				if (this.maxHp == null) { // attack: regenerate 2 hp
+					this.maxHp = this.hp;
+				}
+				var regeneration = 2;
+				if (this.hp <= this.maxHp - regeneration) {
+					this.hp += regeneration;
+					Message.print('Some wounds of the Troll have been regenerated.', false);
+				}
+				return true;
+			}, function() {
+				if (this.maxHp == null) { // defend: regenerate 1 hp
 					this.maxHp = this.hp;
 				}
 				var regeneration = 1;
@@ -256,7 +266,7 @@ Monster.get = function(type) {
 				}
 				return true;
 			}, function() {
-				if (this.maxHp == null) { // move
+				if (this.maxHp == null) { // move: regenerate 2 hp
 					this.maxHp = this.hp;
 				}
 				var regeneration = 2;
@@ -705,7 +715,7 @@ Monster.get = function(type) {
 		return new Monster('Beholder', 17, 22, 3, Combat.roll(100, 40), {move: 'image/beholder.png', 
 			bleed: 'image/beholder_bl.png'}, 220, function() {
 				var savingThrowModifier = -5;
-				var roll = Combat.roll(1, 6);
+				var roll = Combat.roll(1, 7);
 				var that = this;
 				if (roll == 1 && !Game.player.paralyzed) {
 					Message.print('Beholder attacks with Ray Of Stunning.', false);
@@ -798,6 +808,64 @@ Monster.get = function(type) {
 							Message.print('Ray Of Petrification misses '+Game.player.name+'.', false);
 						}
 					}, 800);
+				} else if (roll == 6) {
+					Message.print('Beholder attacks with Ray Of Telekinesis.', false);
+					MazeUtil.drawPowerWord();
+					setTimeout(function() {
+						if (that.position.isNeighborPosition(Game.player.position.x, Game.player.position.y) && !Game.player.savingThrow(savingThrowModifier)) {
+							var damage = 10;
+							Game.player.hp -= damage;
+							Message.print(Game.player.name+' is hit by a telekinetic force and suffers '+damage+' damage.', false);
+							Combat.death();
+							if (that.position.x == Game.player.position.x) {
+								if (that.position.y > Game.player.position.y) {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('RIGHT');
+									}
+								} else {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('LEFT');
+									}
+								}
+							} else if (that.position.y == Game.player.position.y) {
+								if (that.position.x > Game.player.position.x) {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('UP');
+									}
+								} else {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('DOWN');
+									}
+								}
+							}
+						} else {
+							Message.print('Ray Of Telekinesis misses '+Game.player.name+'.', false);
+						}
+					}, 800);
 				} else {
 					return true;
 				}
@@ -810,6 +878,7 @@ Monster.get = function(type) {
 				var savingThrowModifier = -5;
 				var roll = Combat.roll(1, 7);
 				var playerPos = Game.player.position;
+				var that = this;
 				if (roll == 1 && !Game.player.paralyzed) {
 					Message.print('Beholder attacks from a distance with Ray Of Stunning.', false);
 					MazeUtil.drawPowerWord();
@@ -901,6 +970,64 @@ Monster.get = function(type) {
 							Message.print('Ray Of Death misses '+Game.player.name+'.', false);
 						}
 					}, 800);
+				} else if (roll == 6) {
+					Message.print('Beholder attacks with Ray Of Telekinesis.', false);
+					MazeUtil.drawPowerWord();
+					setTimeout(function() {
+						if (playerPos.x == Game.player.position.x && playerPos.y == Game.player.position.y && !Game.player.savingThrow(savingThrowModifier)) {
+							var damage = 10;
+							Game.player.hp -= damage;
+							Message.print(Game.player.name+' is hit by a telekinetic force and suffers '+damage+' damage.', false);
+							Combat.death();
+							if (that.position.x == Game.player.position.x) {
+								if (that.position.y > Game.player.position.y) {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('RIGHT');
+									}
+								} else {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('LEFT');
+									}
+								}
+							} else if (that.position.y == Game.player.position.y) {
+								if (that.position.x > Game.player.position.x) {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('DOWN');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('UP');
+									}
+								} else {
+									if (Game.player.position.direction == 'NORTH') {
+										Event.move('RIGHT');
+									} else if (Game.player.position.direction == 'SOUTH') {
+										Event.move('LEFT');
+									} else if (Game.player.position.direction == 'EAST') {
+										Event.move('UP');
+									} else if (Game.player.position.direction == 'WEST') {
+										Event.move('DOWN');
+									}
+								}
+							}
+						} else {
+							Message.print('Ray Of Telekinesis misses '+Game.player.name+'.', false);
+						}
+					}, 800);
 				} else {
 					return true;
 				}
@@ -956,7 +1083,7 @@ Monster.get = function(type) {
 					var that = this;
 					setTimeout(function() {
 						if (!Game.player.savingThrow(savingThrowModifier)) {
-							var damage = Combat.roll(0, 60);
+							var damage = Combat.roll(20, 40);
 							if (damage > 0) {
 								Game.player.hp -= damage;
 								Message.print('Fire does '+damage+' damage on '+Game.player.name+'.', false);
