@@ -3,6 +3,7 @@ var Event = {
 };
 
 Event.init = function() {
+	Message.print("Game started.");
 	Canvas.elem = document.getElementById('gameCanvas');
 	Canvas.elem.width = Config.canvasWidth;
 	Canvas.elem.height = Config.canvasHeight;
