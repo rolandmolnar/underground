@@ -16,7 +16,7 @@ function Character(level, weapon, armor) {
 		}
 		this.maxHp = this.level*10 + 40;
 		this.attack = this.level + (this.weapon == null ? 0 : this.weapon.attackMod);
-		this.defense = 10 + this.level + (this.armor == null ? 0 : this.armor.defenseMod);
+		this.defense = 9 + this.level + (this.armor == null ? 0 : this.armor.defenseMod);
 		this.speed = this.level + (this.weapon == null ? 2 : this.weapon.speedMod) + 
 			(this.armor == null ? 2 : this.armor.speedMod);
 		if (this.weakened) {
