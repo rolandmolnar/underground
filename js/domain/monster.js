@@ -69,19 +69,19 @@ Monster.directions = ['NORTH', 'SOUTH', 'EAST', 'WEST'];
 
 Monster.get = function(type) {
 	if (type == 'GOBLIN') {
-		return new Monster('Goblin', 4, 10, 1, Combat.roll(13, 8), {move: 'image/goblin.png', 
+		return new Monster('Goblin', 4, 9, 1, Combat.roll(13, 8), {move: 'image/goblin.png', 
 			bleed: 'image/goblin_bl.png'}, 20);
 	} else if (type == 'KOBOLD') {
-		return new Monster('Kobold', 2, 9, 6, Combat.roll(10, 5), {move: 'image/kobold.png', 
+		return new Monster('Kobold', 2, 8, 6, Combat.roll(10, 5), {move: 'image/kobold.png', 
 			bleed: 'image/kobold_bl.png'}, 12);
 	} else if (type == 'KOBOLD_CHIEFTAIN') {
-		return new Monster('Kobold Chieftain', 6, 16, 4, 35, {move: 'image/goblin.png', 
+		return new Monster('Kobold Chieftain', 6, 15, 4, 35, {move: 'image/goblin.png', 
 			bleed: 'image/goblin_bl.png'}, 40);
 	} else if (type == 'ZOMBIE') {
-		return new Monster('Zombie', 3, 14, -8, Combat.roll(10, 20), {move: 'image/zombie.png', 
+		return new Monster('Zombie', 3, 13, -8, Combat.roll(10, 20), {move: 'image/zombie.png', 
 			bleed: 'image/zombie_bl.png'}, 22);
 	} else if (type == 'GHOUL') {
-		return new Monster('Ghoul', 5, 17, -2, Combat.roll(20, 20), {move: 'image/ghoul.png', 
+		return new Monster('Ghoul', 5, 16, -2, Combat.roll(20, 20), {move: 'image/ghoul.png', 
 			bleed: 'image/ghoul_bl.png'}, 45, function() {
 				var roll = Combat.roll(1, 3);
 				if (Game.player.poisonedInterval == null && !Game.player.paralyzed && roll == 1) {
@@ -126,7 +126,7 @@ Monster.get = function(type) {
 				return true;
 			});
 	} else if (type == 'GORGON') {
-		return new Monster('Gorgon', 12, 20, -4, Combat.roll(70, 30), {move: 'image/gorgon.png', 
+		return new Monster('Gorgon', 12, 19, -4, Combat.roll(70, 30), {move: 'image/gorgon.png', 
 			bleed: 'image/gorgon_bl.png'}, 105, function() {
 				var roll = Combat.roll(1, 4);
 				if (!Game.player.petrified && !Game.player.paralyzed && (this.firstBreath == null || this.firstBreath == false || roll == 1)) {
@@ -165,19 +165,19 @@ Monster.get = function(type) {
 				return true;
 			});
 	} else if (type == 'GIANT_TOAD') {
-		return new Monster('Giant Toad', 7, 15, 11, Combat.roll(35, 30), {move: 'image/toad.png', 
+		return new Monster('Giant Toad', 7, 14, 11, Combat.roll(35, 30), {move: 'image/toad.png', 
 			bleed: 'image/toad_bl.png'}, 60);
 	} else if (type == 'FOMORIAN_GIANT') {
-		return new Monster('Fomorian Giant', 17, 21, 5, Combat.roll(120, 20), {move: 'image/fomorian_giant.png', 
+		return new Monster('Fomorian Giant', 17, 20, 5, Combat.roll(120, 20), {move: 'image/fomorian_giant.png', 
 			bleed: 'image/fomorian_giant_bl.png'}, 170);
 	} else if (type == 'FIRE_GIANT') {
-		return new Monster('Fire Giant', 26, 27, 3, Combat.roll(110, 40), {move: 'image/fire_giant.png', 
+		return new Monster('Fire Giant', 26, 26, 3, Combat.roll(110, 40), {move: 'image/fire_giant.png', 
 			bleed: 'image/fire_giant_bl.png'}, 200);
 	} else if (type == 'FIRE_GIANT_KING') {
-		return new Monster('Fire Giant King', 29, 30, 4, 160, {move: 'image/fire_giant.png', 
+		return new Monster('Fire Giant King', 29, 29, 4, 160, {move: 'image/fire_giant.png', 
 			bleed: 'image/fire_giant_bl.png'}, 230);
 	} else if (type == 'INTELLECT_DEVOURER') {
-		return new Monster('Intellect Devourer', 14, 17, 8, Combat.roll(30, 40), {move: 'image/intellect_devourer.png', 
+		return new Monster('Intellect Devourer', 14, 16, 8, Combat.roll(30, 40), {move: 'image/intellect_devourer.png', 
 			bleed: 'image/intellect_devourer_bl.png'}, 110, function() {
 				var isInPlayersView = (this.getDistanceFromPlayer(2) > -1);
 				if (isInPlayersView) {
@@ -244,7 +244,7 @@ Monster.get = function(type) {
 				return true;
 		});
 	} else if (type == 'TROLL') {
-		return new Monster('Troll', 16, 18, -3, Combat.roll(50, 25), {move: 'image/troll.png', 
+		return new Monster('Troll', 16, 17, -3, Combat.roll(50, 25), {move: 'image/troll.png', 
 			bleed: 'image/troll_bl.png'}, 100, function() {
 				if (this.maxHp == null) { // attack: regenerate 2 hp
 					this.maxHp = this.hp;
@@ -277,7 +277,7 @@ Monster.get = function(type) {
 				return true;
 			});
 	} else if (type == 'HAG') {
-		return new Monster('Lady', 17, 20, 8, Combat.roll(80, 30), {move: 'image/lady.png', 
+		return new Monster('Lady', 17, 19, 8, Combat.roll(80, 30), {move: 'image/lady.png', 
 			bleed: 'image/lady.png'}, 120, function() {
 				if (this.shapeChanged == null || this.shapeChanged) {
 					var nextPos = Game.player.position.getNextPosition();
@@ -296,19 +296,19 @@ Monster.get = function(type) {
 				return true;
 			});
 	} else if (type == 'HOMONCULOUS') {
-		return new Monster('Homonculous', 1, 10, 3, 15, {move: 'image/homonculous.png', 
+		return new Monster('Homonculous', 1, 9, 3, 15, {move: 'image/homonculous.png', 
 			bleed: 'image/homonculous_bl.png'}, 13);
 	} else if (type == 'CRAWLING_CLAWS') {
-		return new Monster('Crawling Claws', 1, 12, 13, Combat.roll(5, 5), {move: 'image/claws.png', 
+		return new Monster('Crawling Claws', 1, 11, 13, Combat.roll(5, 5), {move: 'image/claws.png', 
 			bleed: 'image/claws_bl.png'}, 10);
 	} else if (type == 'HUMAN_GUARD') {
-		return new Monster('Human Guard', 3, 12, 0, Combat.roll(20, 10), {move: 'image/human_guard.png', 
+		return new Monster('Human Guard', 3, 11, 0, Combat.roll(20, 10), {move: 'image/human_guard.png', 
 			bleed: 'image/human_guard_bl.png'}, 25);
 	} else if (type == 'HUMAN_ELITE_WARRIOR') {
-		return new Monster('Human Elite Warrior', 11, 18, 1, Combat.roll(50, 30), {move: 'image/human_guard.png', 
+		return new Monster('Human Elite Warrior', 11, 17, 1, Combat.roll(50, 30), {move: 'image/human_guard.png', 
 			bleed: 'image/human_guard_bl.png'}, 80);
 	} else if (type == 'HUMAN_PRIEST') {
-		return new Monster('Human Priest', 8, 16, 2, Combat.roll(35, 10), {move: 'image/human_priest.png', 
+		return new Monster('Human Priest', 8, 15, 2, Combat.roll(35, 10), {move: 'image/human_priest.png', 
 			bleed: 'image/human_priest_bl.png'}, 55, function() {
 				if (this.healing == null) {
 					this.healing = 2;
@@ -352,7 +352,7 @@ Monster.get = function(type) {
 			return true;
 		});
 	} else if (type == 'DROW_MAGE') {
-		return new Monster('Drow Mage', 6, 15, 6, Combat.roll(25, 25), {move: 'image/drow.png', 
+		return new Monster('Drow Mage', 6, 14, 6, Combat.roll(25, 25), {move: 'image/drow.png', 
 			bleed: 'image/drow_bl.png'}, 65, function() {
 				if (this.lightning == null) {
 					this.lightning = 2;
@@ -395,7 +395,7 @@ Monster.get = function(type) {
 				return true;
 		});
 	} else if (type == 'NIGHTMARE') {
-		return new Monster('Nightmare', 14, 19, 5, Combat.roll(50, 40), {move: 'image/nightmare.png', 
+		return new Monster('Nightmare', 14, 18, 5, Combat.roll(50, 40), {move: 'image/nightmare.png', 
 			bleed: 'image/nightmare_bl.png'}, 110, function() {
 				var roll = Combat.roll(1, 2);
 				if (roll == 1 && !Game.player.blind) {
@@ -431,10 +431,10 @@ Monster.get = function(type) {
 				return true;
 		});
 	} else if (type == 'SKELETON') {
-		return new Monster('Skeleton', 2, 11, -2, Combat.roll(10, 15), {move: 'image/skeleton.png', 
+		return new Monster('Skeleton', 2, 10, -2, Combat.roll(10, 15), {move: 'image/skeleton.png', 
 			bleed: 'image/skeleton.png'}, 15);
 	} else if (type == 'GIANT_SKELETON') {
-		return new Monster('Giant Skeleton', 5, 16, 1, Combat.roll(30, 20), {move: 'image/giant_skeleton.png', 
+		return new Monster('Giant Skeleton', 5, 15, 1, Combat.roll(30, 20), {move: 'image/giant_skeleton.png', 
 			bleed: 'image/giant_skeleton.png'}, 50, function() {
 				var roll = Combat.roll(1, 5);
 				if (roll == 1) {
@@ -455,7 +455,7 @@ Monster.get = function(type) {
 			return true;
 		});
 	} else if (type == 'HELL_HOUND') {
-		return new Monster('Hell Hound', 9, 14, 7, Combat.roll(40, 20), {move: 'image/hell_hound.png', 
+		return new Monster('Hell Hound', 9, 13, 7, Combat.roll(40, 20), {move: 'image/hell_hound.png', 
 			bleed: 'image/hell_hound_bl.png'}, 70, function() {
 				var roll = Combat.roll(1, 10);
 				if (roll <= 3) {
@@ -476,7 +476,7 @@ Monster.get = function(type) {
 			return true;
 		});
 	} else if (type == 'SPECTRE') {
-		return new Monster('Spectre', 8, 17, 4, Combat.roll(40, 30), {move: 'image/spectre.png', 
+		return new Monster('Spectre', 8, 16, 4, Combat.roll(40, 30), {move: 'image/spectre.png', 
 			bleed: 'image/spectre_bl.png'}, 75, null, function() {
 				if (Game.player.weapon != null && (Game.player.weapon.name.indexOf('Silver') >= 0 || 
 						Game.player.weapon.name.indexOf('Magic') >= 0)) {
@@ -487,10 +487,10 @@ Monster.get = function(type) {
 				}
 			});
 	} else if (type == 'INVISIBLE_STALKER') {
-		return new Monster('Invisible Stalker', 13, 18, 2, Combat.roll(30, 35), {move: 'image/invisible.png', 
+		return new Monster('Invisible Stalker', 13, 17, 2, Combat.roll(30, 35), {move: 'image/invisible.png', 
 			bleed: 'image/invisible_bl.png'}, 90);
 	} else if (type == 'LESSER_FIRE_ELEMENTAL') {
-		return new Monster('Lesser Fire Elemental', 15, 19, -1, Combat.roll(40, 40), {move: 'image/fire_elemental.png', 
+		return new Monster('Lesser Fire Elemental', 15, 18, -1, Combat.roll(40, 40), {move: 'image/fire_elemental.png', 
 			bleed: 'image/fire_elemental_bl.png'}, 120, function() {	
 				var roll = Combat.roll(1, 2);
 				if (roll == 1) {
@@ -511,7 +511,7 @@ Monster.get = function(type) {
 			return true;
 		});
 	} else if (type == 'LESSER_WATER_ELEMENTAL') {
-		return new Monster('Lesser Water Elemental', 16, 21, -3, Combat.roll(60, 30), {move: 'image/water_elemental.png', 
+		return new Monster('Lesser Water Elemental', 16, 20, -3, Combat.roll(60, 30), {move: 'image/water_elemental.png', 
 			bleed: 'image/water_elemental_bl.png'}, 120, function() {
 				Message.print(this.name+' attacks', false);
 				if (Game.player.hp > 0) {
@@ -530,7 +530,7 @@ Monster.get = function(type) {
 				return false;
 			});
 	} else if (type == 'DEATH_KNIGHT') {
-		return new Monster('Death Knight', 21, 24, 0, Combat.roll(70, 40), {move: 'image/death_knight.png', 
+		return new Monster('Death Knight', 21, 23, 0, Combat.roll(70, 40), {move: 'image/death_knight.png', 
 			bleed: 'image/death_knight.png'}, 180, function() {	
 				if (this.deathWord == null || !this.deathWord) {
 					Message.print('Death Knight attacks with Word Of Death.', false);
@@ -569,7 +569,7 @@ Monster.get = function(type) {
 			}
 		});
 	} else if (type == 'LICH') {
-		return new Monster('Lich', 18, 25, 12, Combat.roll(140, 20), {move: 'image/lich.png', 
+		return new Monster('Lich', 18, 24, 12, Combat.roll(140, 20), {move: 'image/lich.png', 
 			bleed: 'image/lich.png'}, 280, function() {
 				var savingThrowModifier = -5;
 				if (this.lightning == null) {
@@ -712,7 +712,7 @@ Monster.get = function(type) {
 			}
 		});
 	} else if (type == 'BEHOLDER') {
-		return new Monster('Beholder', 19, 23, 3, Combat.roll(100, 40), {move: 'image/beholder.png', 
+		return new Monster('Beholder', 19, 22, 3, Combat.roll(100, 40), {move: 'image/beholder.png', 
 			bleed: 'image/beholder_bl.png'}, 220, function() {
 				var savingThrowModifier = -5;
 				var roll = Combat.roll(1, 7);
@@ -1036,7 +1036,7 @@ Monster.get = function(type) {
 			return true;
 		});
 	} else if (type == 'RED_DRAGON') {
-		return new Monster('Red Dragon', 30, 32, 10, Combat.roll(200, 50), {move: 'image/red_dragon.png', 
+		return new Monster('Red Dragon', 30, 31, 10, Combat.roll(200, 50), {move: 'image/red_dragon.png', 
 			bleed: 'image/red_dragon_bl.png'}, 360, function() {
 				var savingThrowModifier = -10;
 				var roll = Combat.roll(1, 8);
