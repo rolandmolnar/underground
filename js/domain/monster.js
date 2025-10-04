@@ -277,7 +277,7 @@ Monster.get = function(type) {
 				return true;
 			});
 	} else if (type == 'HAG') {
-		return new Monster('Lady', 17, 19, 8, Combat.roll(80, 30), {move: 'image/lady.png', 
+		return new Monster('Lady', 15, 19, 7, Combat.roll(80, 30), {move: 'image/lady.png', 
 			bleed: 'image/lady.png'}, 130, function() {
 				if (this.shapeChanged == null || this.shapeChanged) {
 					var nextPos = Game.player.position.getNextPosition();
